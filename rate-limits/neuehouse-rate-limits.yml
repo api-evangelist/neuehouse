@@ -1,0 +1,30 @@
+generated: '2026-08-26'
+method: probed
+source: live anonymous responses from https://www.neuehouse.com/wp-json/ + https://www.neuehouse.com/robots.txt
+limit_count: 0
+summary: >-
+  NeueHouse documents no API rate limits and its live responses carry no rate-limit signal. Probed
+  anonymously on 2026-08-26: GET /wp-json/wp/v2/pages returned 200 with no X-RateLimit-*, no
+  RateLimit-*, and no Retry-After. There is no developer portal or API documentation on which limits
+  could be published. An honest zero.
+limits: []
+response_headers:
+  x_ratelimit: false
+  ratelimit_rfc9239: false
+  retry_after: false
+  observed: [x-wp-total, x-wp-totalpages, link, cache-control, x-cacheable, x-cache, x-cache-group]
+exhaustion_status: null
+related_signals:
+- signal: robots.txt Crawl-delay
+  value: 10
+  url: https://www.neuehouse.com/robots.txt
+  status: 200
+  note: >-
+    A crawler courtesy directive for the HTML site, not an enforced API limit. Recorded because it is
+    the only throttling intent NeueHouse publishes anywhere.
+- signal: Cloudflare edge
+  note: >-
+    The site is fronted by Cloudflare (server: cloudflare), so undocumented edge protections may exist.
+    Nothing about them is published, and none fired during probing.
+notes:
+- WordPress core enforces no REST rate limiting; any limit here would come from the Cloudflare/WP Engine edge and is undisclosed.

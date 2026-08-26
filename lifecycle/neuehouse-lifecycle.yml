@@ -1,0 +1,58 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.neuehouse.com/ (site search) + openapi/_original/neuehouse-wp-json-index.json
+summary: >-
+  NeueHouse publishes no API lifecycle policy of any kind — no versioning policy, no deprecation
+  policy, no SLA, no status page, and no changelog. Searched the site (15 published pages, enumerated
+  via the live WP pages collection) and found no developer or engineering surface. What versioning
+  exists is the WordPress namespace convention inherited from the platform, not a NeueHouse
+  commitment.
+versioning:
+  scheme: path-namespace
+  current: wp/v2
+  published_policy: false
+  note: >-
+    /wp-json/wp/v2 is versioned by the WordPress project, not by NeueHouse. Namespaces are additive.
+    NeueHouse states nothing about how or whether it would follow a WordPress namespace change.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No RFC 8594 Sunset or Deprecation headers were observed on live responses, and no deprecation
+    policy page exists. No operation in the live route index is flagged deprecated.
+sla:
+  published: false
+  note: No uptime or support SLA is published; there is no customer-facing API agreement.
+status_page:
+  present: false
+  probed:
+  - url: https://status.neuehouse.com/
+    status: 0
+    note: Host does not resolve (no DNS record).
+  note: >-
+    No status page exists on any subdomain and none is linked from the site. No StatusPage pointer is
+    emitted.
+changelog:
+  present: false
+  note: >-
+    No dated changelog, release notes or blog. The WordPress posts collection
+    (/wp-json/wp/v2/posts) is live but returns an empty array — the site publishes pages only.
+  probed:
+  - url: https://www.neuehouse.com/wp-json/wp/v2/posts
+    status: 200
+    finding: '[] — zero posts published.'
+corporate_lifecycle:
+  note: >-
+    Recorded because it is material to anyone depending on this surface. NeueHouse ceased operations
+    at all locations in September 2025 and filed Chapter 7. Convene Hospitality Group acquired the
+    NeueHouse brand, intellectual property and the Madison Square flagship out of bankruptcy, and the
+    brand relaunched under CHG ownership in January 2026. The current site identifies itself as
+    "A CHG Venue". The Los Angeles locations were not acquired and are not reopening.
+  ownership: Convene Hospitality Group (CHG)
+  brand_status: operating (Madison Square, New York)
+  sources:
+  - https://www.prnewswire.com/news-releases/convene-hospitality-group-ensures-continuity-of-neuehouse-302653036.html
+  - https://en.wikipedia.org/wiki/NeueHouse

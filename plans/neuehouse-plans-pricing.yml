@@ -1,0 +1,36 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.neuehouse.com/membership/
+plan_count: 0
+summary: >-
+  NeueHouse publishes no priced plans of any kind, and none for API access. The membership page
+  (HTTP 200, fetched 2026-08-26) describes a hand-selected community admitted "on a rolling basis,
+  only as spaces become available" and routes every visitor to an application form — no tier names,
+  no prices, no billing periods are stated. This is an application-gated private club, not a
+  self-service product. The content API is a byproduct of the WordPress site and is neither sold nor
+  metered.
+plans: []
+api_pricing:
+  model: not-offered
+  note: >-
+    There is no paid API tier, no free tier, and no developer signup. Anonymous reads of published
+    content are open at no cost simply because the WordPress REST API is on by default; writes
+    require a WordPress user account that NeueHouse issues internally.
+membership_access:
+  model: application-only
+  application_url: https://www.neuehouse.com/membership/
+  application_status: 200
+  pricing_published: false
+  note: >-
+    Prices are disclosed only after application. Searched the membership, workspace and private-events
+    pages — all 200, none carry a figure.
+evidence:
+- url: https://www.neuehouse.com/membership/
+  status: 200
+  finding: No tier names or prices published; Apply call-to-action only.
+- url: https://www.neuehouse.com/workspace/
+  status: 200
+  finding: Describes workspace offering; no published rates.
+- url: https://www.neuehouse.com/private-events/
+  status: 200
+  finding: Event enquiry surface; no published rates.

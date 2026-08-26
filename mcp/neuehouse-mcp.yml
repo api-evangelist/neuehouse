@@ -1,0 +1,69 @@
+generated: '2026-08-26'
+method: derived
+source: openapi/neuehouse-content-api-openapi.yml
+status: candidate
+summary: >-
+  NeueHouse ships no MCP server. Searched the site, the npm registry and PyPI and found nothing, and
+  the live WordPress route index registers no mcp namespace (16 namespaces enumerated; none is MCP).
+  The tools below are a CANDIDATE surface derived from the provider's own live read-only content API
+  — they are what an MCP server over this API would expose. Nobody operates them today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+  note: >-
+    mode is none because no server exists in either form — there is no hosted endpoint to POST to and
+    no stdio package to install. No endpoint URL is guessed here.
+discovery:
+  searched:
+  - target: https://www.neuehouse.com/wp-json/ namespaces
+    result: 'no mcp namespace among the 16 registered (cf. Tigera, which does register wp-json/mcp)'
+  - target: npm registry search "neuehouse"
+    result: 0 packages
+  - target: PyPI neuehouse
+    result: 404
+candidate_tools:
+- name: list_events
+  description: List NeueHouse cultural programming — talks, screenings, dinners, performances.
+  rest: [get_wp_v2_event]
+  inputSchema_source: openapi/neuehouse-content-api-openapi.yml#/paths/~1wp~1v2~1event/get
+  live_item_count: 467
+- name: get_event
+  description: Retrieve a single event by its numeric id.
+  rest: [get_wp_v2_event_by_id]
+  live_item_count: 467
+- name: search_content
+  description: Full-text search across every public content type.
+  rest: [get_wp_v2_search]
+- name: list_locations
+  description: List NeueHouse houses (Bradbury, Hollywood, Madison Square).
+  rest: [get_wp_v2_location]
+  live_item_count: 3
+- name: get_location
+  description: Retrieve a single house by id.
+  rest: [get_wp_v2_location_by_id]
+- name: list_press
+  description: List NeueHouse press coverage.
+  rest: [get_wp_v2_press]
+  live_item_count: 66
+- name: list_pages
+  description: List site pages — membership, workspace, private events, policies.
+  rest: [get_wp_v2_pages]
+  live_item_count: 15
+- name: get_page
+  description: Retrieve a single page by id.
+  rest: [get_wp_v2_pages_by_id]
+- name: list_categories
+  description: List the shared taxonomy that classifies events, locations and posts.
+  rest: [get_wp_v2_categories]
+  live_item_count: 24
+- name: get_media
+  description: Retrieve an image/asset record, including source_url and dimensions.
+  rest: [get_wp_v2_media_by_id]
+  live_item_count: 9144
+notes:
+- Read-only by design. Every write route requires a WordPress user NeueHouse issues only internally, so no mutating tool is proposed.
+- The acf extension object on event/location records was observed EMPTY, so an events tool cannot promise start times or venues.

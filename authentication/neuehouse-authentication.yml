@@ -1,0 +1,27 @@
+generated: '2026-08-26'
+method: derived
+source: openapi/neuehouse-content-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress Application Passwords. The live route index advertises authentication.application-passwords
+    with an authorization endpoint at https://www.neuehouse.com/wp-admin/authorize-application.php.
+    Credentials are issued per WordPress user from wp-admin; there is no public self-service
+    registration.
+  sources:
+  - openapi/neuehouse-content-api-openapi.yml
+- name: cookieNonce
+  type: apiKey
+  in: header
+  parameter: X-WP-Nonce
+  description: Cookie authentication with an X-WP-Nonce header, used by first-party browser
+    clients only.
+  sources:
+  - openapi/neuehouse-content-api-openapi.yml

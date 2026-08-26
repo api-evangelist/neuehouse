@@ -1,0 +1,95 @@
+overlay: 1.0.0
+info:
+  title: NeueHouse Content API — API Evangelist enhancements
+  version: 1.0.0
+  description: >-
+    Overlay 1.0.0 capturing API Evangelist's enhancements to the NeueHouse content contract. It
+    extends openapi/neuehouse-content-api-openapi.yml, which was itself derived from the provider's
+    live WordPress route index at https://www.neuehouse.com/wp-json/. The original is never mutated.
+    Everything asserted here was verified against live responses on 2026-08-26.
+extends: ./openapi/neuehouse-content-api-openapi.yml
+x-generated: '2026-08-26'
+x-method: generated
+x-source: openapi/neuehouse-content-api-openapi.yml + live probes of https://www.neuehouse.com/wp-json/
+actions:
+- target: $.info
+  description: Record the operating-status caveat that any consumer of this data needs.
+  update:
+    x-provider-status:
+      brand_owner: Convene Hospitality Group (CHG)
+      note: >-
+        NeueHouse ceased operations September 2025 and filed Chapter 7. CHG acquired the brand, IP and
+        the Madison Square flagship out of bankruptcy and relaunched in January 2026. The Los Angeles
+        houses were not acquired and are not reopening, although their location records are still
+        served by this API. The content estate is not the operating estate.
+- target: $.info
+  description: Record that no rate limit is published or signalled.
+  update:
+    x-rate-limits:
+      published: false
+      response_headers: false
+      robots_crawl_delay: 10
+      guidance: No limits are documented and no headers are returned; pace requests conservatively.
+- target: $.info
+  description: Record the error envelope shape, which is not RFC 9457.
+  update:
+    x-error-format:
+      style: wordpress-rest-error
+      rfc9457: false
+      envelope: '{"code":"...","message":"...","data":{"status":000}}'
+      catalog: errors/neuehouse-problem-types.yml
+- target: $.info
+  description: Record reversibility, idempotency and dry-run posture for agent consumers.
+  update:
+    x-agent-posture:
+      read_only_for_third_parties: true
+      idempotency: unsupported
+      dry_run: unsupported
+      reversibility: na
+      rationale: >-
+        Every mutating route requires a WordPress user credential NeueHouse issues only internally.
+        An external agent can read and can do nothing else, so there is no action to make idempotent
+        or to reverse.
+- target: $.paths['/wp/v2/event'].get
+  description: Annotate the marquee collection with verified live volume and its known content gap.
+  update:
+    x-live-item-count: 467
+    x-verified: '2026-08-26'
+    x-caveat: >-
+      Event records carry no `content` or `excerpt` field, and the `acf` extension object was
+      observed empty. Start times, venue detail and ticket links are NOT available from this API.
+- target: $.paths['/wp/v2/location'].get
+  description: Annotate the location collection with its three verified records and the TLS defect.
+  update:
+    x-live-item-count: 3
+    x-records:
+    - {id: 6421, slug: bradbury, title: Bradbury}
+    - {id: 210, slug: los-angeles, title: Hollywood}
+    - {id: 104, slug: new-york, title: Madison Square}
+    x-caveat: >-
+      The bradbury record links to https://bradbury.neuehouse.com, which serves a real NeueHouse site
+      from Netlify but presents a *.netlify.app certificate — TLS name verification fails on that host.
+- target: $.paths['/wp/v2/press'].get
+  update:
+    x-live-item-count: 66
+    x-verified: '2026-08-26'
+- target: $.paths['/wp/v2/media'].get
+  update:
+    x-live-item-count: 9144
+    x-verified: '2026-08-26'
+- target: $.paths['/wp/v2/pages'].get
+  update:
+    x-live-item-count: 15
+    x-verified: '2026-08-26'
+- target: $.paths['/wp/v2/posts'].get
+  description: Flag a registered but empty collection so agents do not treat 200 as content.
+  update:
+    x-live-item-count: 0
+    x-caveat: Registered and answering 200, but empty. NeueHouse publishes no blog.
+- target: $.paths['/wp/v2/neuejournal'].get
+  description: Flag a registered but empty collection.
+  update:
+    x-live-item-count: 0
+    x-caveat: >-
+      NeueJournal is registered as a type and answers 200, but the collection is empty — the archive
+      did not survive the ownership change.

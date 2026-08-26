@@ -1,0 +1,140 @@
+generated: '2026-08-26'
+method: derived
+source: openapi/_original/neuehouse-wp-json-index.json (live route index, https://www.neuehouse.com/wp-json/, HTTP 200)
+summary: >-
+  Cross-cutting runtime semantics for the NeueHouse content API. NeueHouse publishes no API
+  documentation of its own, so every convention below was read off the live WordPress REST route
+  index it serves, or off the WordPress REST specification that index implements
+  (https://developer.wordpress.org/rest-api/). Where a convention is a WordPress platform default
+  rather than a NeueHouse decision, that is stated.
+
+authentication:
+  style: http-basic (WordPress Application Passwords) + cookie/nonce for first-party browser clients
+  anonymous_read: true
+  note: >-
+    The route index advertises authentication.application-passwords with an authorization endpoint at
+    https://www.neuehouse.com/wp-admin/authorize-application.php. Credentials are minted per WordPress
+    user inside wp-admin; there is no public developer signup, so the write surface is effectively
+    closed to third parties. Reads of published content answer anonymously.
+  artifact: authentication/neuehouse-authentication.yml
+
+pagination:
+  style: page-number
+  params:
+  - name: page
+    default: 1
+    description: 1-indexed page of the collection.
+  - name: per_page
+    default: 10
+    maximum: 100
+    description: Items per page; the route index declares a maximum of 100.
+  - name: offset
+    description: Alternative offset-based cursor, declared on most wp/v2 collections.
+  response_headers:
+  - name: X-WP-Total
+    description: Total number of items in the unpaginated collection.
+  - name: X-WP-TotalPages
+    description: Total number of pages at the current per_page.
+  link_header: true
+  note: >-
+    Verified live against https://www.neuehouse.com/wp-json/wp/v2/pages — the response carries
+    X-WP-Total and X-WP-TotalPages plus RFC 5988 Link rel="next"/"prev".
+
+sparse_fields:
+  supported: true
+  param: _fields
+  description: >-
+    Comma-separated allowlist of response properties, e.g. ?_fields=id,link,title. This is the
+    WordPress equivalent of sparse fieldsets and it works anonymously.
+
+embedding:
+  supported: true
+  param: _embed
+  description: >-
+    ?_embed inlines linked resources (author, featured media, terms) into an _embedded object,
+    collapsing what would otherwise be several round trips.
+  hal_links: true
+  note: Every resource carries a _links object (HAL-style), which is what _embed resolves.
+
+filtering:
+  supported: true
+  common_params: [search, include, exclude, slug, status, order, orderby, before, after, parent]
+  note: Declared per-route in the live index; enums and defaults are carried into the derived OpenAPI.
+
+versioning:
+  scheme: path-namespace
+  current: wp/v2
+  note: >-
+    The API is versioned by namespace segment (/wp-json/wp/v2). Namespaces are additive — a future
+    wp/v3 would be served alongside v2 rather than replacing it. This is a WordPress platform
+    convention, not a NeueHouse-published policy; NeueHouse states no versioning policy of its own.
+  artifact: lifecycle/neuehouse-lifecycle.yml
+
+error_envelope:
+  format: wordpress-rest-error
+  rfc9457: false
+  content_type: application/json
+  shape:
+    code: Machine-readable string, e.g. rest_no_route, rest_invalid_param, rest_forbidden.
+    message: Human-readable message.
+    data.status: The HTTP status, repeated inside the body.
+    data.params: Per-parameter validation messages on 400.
+  note: >-
+    Not RFC 9457 problem+json — WordPress predates it and serves application/json with its own
+    envelope. Verified live: GET /wp-json/wp/v2/nope returns 404 with code rest_no_route.
+  artifact: errors/neuehouse-problem-types.yml
+
+idempotency:
+  supported: false
+  status: na
+  note: >-
+    No Idempotency-Key header or equivalent is declared anywhere in the live route index, and
+    WordPress core implements none. Writes are additionally closed to third parties (no public
+    credential issuance), so there is no third-party write path that could double-fire. Recorded as
+    unsupported rather than na because the write surface does exist for authenticated first-party
+    users — it simply has no replay protection.
+
+dry_run_mode:
+  supported: false
+  status: na
+  note: No preview/validate-only mode is declared on any route in the live index.
+
+request_id_tracing:
+  supported: false
+  note: >-
+    No X-Request-Id, X-Correlation-Id or trace header is emitted on live responses. Responses carry
+    only WordPress/host headers (X-WP-Total, Link, Cache-Control) plus Cloudflare/WP Engine cache headers.
+
+rate_limit_signaling:
+  supported: false
+  note: >-
+    No X-RateLimit-* or RateLimit-* headers appear on live anonymous responses and no limits are
+    documented. robots.txt declares Crawl-delay: 10, which is a crawler courtesy directive, not an
+    enforced API limit.
+  artifact: rate-limits/neuehouse-rate-limits.yml
+
+reversibility:
+  grade: na
+  applicable: false
+  summary: >-
+    There is no third-party write surface to reverse. Every mutating route in the live index
+    (POST/PUT/PATCH/DELETE on wp/v2 resources) requires an authenticated WordPress user, and
+    NeueHouse issues no public API credentials — application passwords are minted only from inside
+    wp-admin. An external agent can read published content and can do nothing else, so no action it
+    is able to take needs taking back.
+  write_surfaces: []
+  note: >-
+    For completeness: WordPress core does implement a soft-delete for posts and pages — DELETE
+    without ?force=true moves the item to trash and it can be restored by setting status back to
+    draft, while ?force=true is permanent. NeueHouse publishes no retention window for the trash
+    (the WordPress default is 30 days and is site-configurable), so no window is asserted here. This
+    is recorded as platform behaviour, not as a NeueHouse-documented reversal guarantee.
+
+caching:
+  cdn: Cloudflare
+  origin: WP Engine
+  note: >-
+    Verified live on GET /wp-json/wp/v2/pages: `server: cloudflare` at the edge, with WP Engine origin
+    cache headers behind it (x-cacheable: SHORT, x-cache: MISS, x-cache-group: normal) and
+    `cache-control: max-age=600, must-revalidate`. Anonymous collection reads are cacheable for 10
+    minutes.

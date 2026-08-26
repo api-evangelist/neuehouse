@@ -1,18 +1,82 @@
 aid: neuehouse
 name: NeueHouse
-description: 'NeueHouse is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'NeueHouse is a private work and cultural home for creatives — a members-only workspace,
+  screening room, podcast studio and events club founded in New York in 2011. It is a hospitality brand
+  rather than a software company and it runs no developer program, publishes no API documentation and
+  issues no API credentials. It does, however, serve a live, anonymous, machine-readable content API from
+  its own host: the site runs on WordPress and its WordPress REST API is exposed at https://www.neuehouse.com/wp-json/,
+  where the route index declares 313 routes across 16 namespaces. Alongside the WordPress defaults the
+  deployment registers four NeueHouse-specific content types that read anonymously — event (467 records
+  of cultural programming), press (66), location (3 houses) and neuejournal (empty) — making the events
+  and press archives genuinely useful to an outside consumer. NeueHouse ceased operations in September
+  2025 and filed Chapter 7; Convene Hospitality Group acquired the brand, intellectual property and the
+  Madison Square flagship out of bankruptcy and relaunched the brand in January 2026. The Los Angeles
+  houses were not acquired and are not reopening, although their records are still served by the content
+  API.'
+image: https://neuehouse.com/wp-content/uploads/2023/05/NeueHouse-Social-Logo.png
 url: https://raw.githubusercontent.com/api-evangelist/neuehouse/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
-- Company
-apis: []
+- Hospitality
+- Coworking
+- Events
+- Content
+- WordPress
+- Membership
+- Real Estate
+- Media
+- Workspace
+apis:
+- name: NeueHouse Content API
+  description: The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/.
+    NeueHouse runs on WordPress and the WordPress REST API is exposed and answering anonymously; the route
+    index is a live machine-readable contract declaring 313 routes across 16 namespaces. The wp/v2 and
+    oembed/1.0 namespaces are the publicly readable surface and include four NeueHouse-specific types
+    — event (467 items), press (66), location (3) and neuejournal (0) — plus pages, media (9,144), categories,
+    search and oEmbed. Reads of published content require no key and no signup. Every write route requires
+    a WordPress Application Password issued only from wp-admin, so there is no third-party write access.
+    NeueHouse publishes no OpenAPI; the definition linked here was mechanically derived by API Evangelist
+    from the provider's own live route index.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - Content
+  - Events
+  - REST
+  - WordPress
+  - JSON
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-content-api-openapi.yml
+  - type: Overlay
+    url: overlays/neuehouse-content-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: MCPServer
+    url: mcp/neuehouse-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +84,83 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.neuehouse.com/
+  name: NeueHouse
+- type: Documentation
+  url: https://developer.wordpress.org/rest-api/
+  name: WordPress REST API Handbook (upstream specification)
+- type: APIReference
+  url: https://www.neuehouse.com/wp-json/
+  name: Live WordPress REST route index
+- type: Support
+  url: https://www.neuehouse.com/contact-us/
+  name: Contact NeueHouse
+- type: SignUp
+  url: https://www.neuehouse.com/membership/
+  name: Apply for membership
+- type: TermsOfService
+  url: https://www.neuehouse.com/terms-conditions/
+  name: Terms & Conditions
+- type: PrivacyPolicy
+  url: https://www.neuehouse.com/privacy-policy/
+  name: Privacy Policy
+- type: Plans
+  url: plans/neuehouse-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/neuehouse-rate-limits.yml
+- type: Authentication
+  url: authentication/neuehouse-authentication.yml
+- type: Conventions
+  url: conventions/neuehouse-conventions.yml
+- type: ErrorCatalog
+  url: errors/neuehouse-problem-types.yml
+- type: DataModel
+  url: data-model/neuehouse-data-model.yml
+- type: Conformance
+  url: conformance/neuehouse-conformance.yml
+- type: Lifecycle
+  url: lifecycle/neuehouse-lifecycle.yml
+- type: DomainSecurity
+  url: security/neuehouse-domain-security.yml
+- type: MCPServer
+  url: mcp/neuehouse-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/neuehouse-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/neuehouse-llms.txt
+- type: Packages
+  url: packages/neuehouse-packages.yml
+- type: Overlay
+  url: overlays/neuehouse-content-api-overlay.yaml
+- type: HouseRules
+  url: https://www.neuehouse.com/house-rules/
+  name: House Rules
+- type: MembershipAgreement
+  url: https://www.neuehouse.com/membership-agreement/
+  name: Membership Agreement
+- type: Accessibility
+  url: https://www.neuehouse.com/accessibility/
+  name: Accessibility Statement
+- type: Events
+  url: https://luma.com/neuehouse
+  name: NeueHouse events calendar (Luma)
+- type: RSS
+  url: https://www.neuehouse.com/feed/
+  name: Site RSS feed
+- type: SecondaryMarket
   url: https://forgeglobal.com/neuehouse_stock/
+  name: Forge Global secondary-market listing (third-party, not operated by NeueHouse)
+  description: 'Third-party page, not operated by NeueHouse. Retained as this repo''s provenance seed.
+    Probed 2026-08-26 with a browser User-Agent and via an independent fetcher: both returned HTTP 403
+    (Forge Global bot challenge), so existence could not be confirmed from our side. Not a scored pointer
+    type.'
+  x-probed:
+    date: '2026-08-26'
+    status: 403
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

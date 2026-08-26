@@ -1,0 +1,44 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  npm registry search, PyPI, RubyGems, plus the NeueHouse site — no SDK, CLI or client library
+  surface exists to search beyond them.
+package_count: 0
+official_count: 0
+summary: >-
+  NeueHouse publishes no client libraries. It runs no developer program, so there is nothing for an
+  SDK to wrap beyond the WordPress REST API, for which generic third-party WordPress clients already
+  exist in every language. No SDKs pointer is emitted in apis.yml — an honest zero.
+packages: []
+registries_searched:
+- registry: npm
+  endpoint: https://registry.npmjs.org/-/v1/search?text=neuehouse
+  status: 200
+  results: 0
+  version: null
+  published: null
+- registry: pypi
+  endpoint: https://pypi.org/pypi/neuehouse/json
+  status: 404
+  results: 0
+  version: null
+  published: null
+- registry: rubygems
+  endpoint: https://rubygems.org/api/v1/gems/neuehouse.json
+  status: 404
+  results: 0
+  version: null
+  published: null
+source_code:
+  github_org_probed: https://api.github.com/orgs/neuehouse
+  github_org_status: 200
+  github_org_claimed: false
+  note: >-
+    A GitHub organization named `neuehouse` exists (created 2023-07-08) but has 0 public repositories
+    and no name, description, blog URL or location set. There is nothing tying it to this company, so
+    ownership cannot be established and NO GitHubOrganization pointer is emitted. Recording the probe
+    rather than the assumption.
+third_party_note: >-
+  Any standard WordPress REST client (e.g. @wordpress/api-fetch on npm, python-wordpress-api) will
+  work against https://www.neuehouse.com/wp-json. These are not NeueHouse packages and are not
+  listed as such.

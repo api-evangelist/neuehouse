@@ -1,0 +1,36 @@
+generated: '2026-08-26'
+method: probed
+source: live GET probes of https://www.neuehouse.com/.well-known/*
+note: >-
+  Every standard /.well-known/ path was probed anonymously on the single host NeueHouse operates
+  (www.neuehouse.com). All eight returned 404. Nothing is served, so this file records a verified
+  absence and NO WellKnown/SecurityTxt pointer is emitted in apis.yml — the probe documents that the
+  provider does not publish these documents, which is not the same as publishing them.
+hosts:
+- host: www.neuehouse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+served_count: 0

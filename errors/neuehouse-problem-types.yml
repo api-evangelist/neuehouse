@@ -1,0 +1,88 @@
+generated: '2026-08-26'
+method: derived
+source: openapi/neuehouse-content-api-openapi.yml + live probes of https://www.neuehouse.com/wp-json/
+format: wordpress-rest-error
+rfc9457: false
+content_type: application/json
+summary: >-
+  NeueHouse publishes no error reference. This catalog is derived from the WordPress REST error
+  contract its live API actually implements, and every entry marked verified below was observed on a
+  real anonymous request to www.neuehouse.com on 2026-08-26. Entries marked platform are WordPress
+  core codes that this deployment will emit but which were not individually triggered.
+envelope:
+  fields:
+    code: Machine-readable error slug.
+    message: Human-readable message.
+    data.status: HTTP status repeated in the body.
+    data.params: Object of per-parameter validation messages (400 only).
+    data.details: Per-parameter detail objects (400 only).
+  example_verified: '{"code":"rest_no_route","message":"No route was found matching the URL and request method.","data":{"status":404}}'
+problem_types:
+- code: rest_no_route
+  status: 404
+  title: No route matched
+  detail: No route was found matching the URL and request method.
+  evidence: verified
+  observed_at: https://www.neuehouse.com/wp-json/wp/v2/nope
+  remediation: Check the path against the live route index at /wp-json/ and confirm the HTTP method is one the route declares.
+- code: rest_cannot_create
+  status: 401
+  title: Not permitted to create
+  detail: Sorry, you are not allowed to create posts as this user.
+  evidence: verified
+  observed_at: POST https://www.neuehouse.com/wp-json/wp/v2/pages
+  remediation: >-
+    Authenticate with a WordPress Application Password. NeueHouse issues these only from wp-admin, so
+    third parties cannot obtain write access — treat the write surface as closed.
+- code: rest_not_logged_in
+  status: 401
+  title: Authentication required
+  detail: You are not currently logged in.
+  evidence: platform
+  remediation: Supply Application Password basic auth, or an X-WP-Nonce with a valid session cookie.
+- code: rest_forbidden
+  status: 403
+  title: Insufficient capability
+  detail: The authenticated user lacks the WordPress capability the route requires.
+  evidence: platform
+  remediation: The credential is valid but under-privileged; a higher WordPress role is required.
+- code: rest_forbidden_context
+  status: 403
+  title: Edit context forbidden
+  detail: Sorry, you are not allowed to edit posts in this post type.
+  evidence: platform
+  remediation: Drop ?context=edit, or authenticate with an editor-capable user.
+- code: rest_invalid_param
+  status: 400
+  title: Invalid parameter
+  detail: One or more parameters failed validation; data.params names each one.
+  evidence: platform
+  remediation: Read data.params for the offending argument, and check its enum/type in the derived OpenAPI.
+- code: rest_missing_callback_param
+  status: 400
+  title: Missing required parameter
+  detail: A required argument was not supplied.
+  evidence: platform
+  remediation: Supply every argument the route index marks required:true.
+- code: rest_post_invalid_id
+  status: 404
+  title: Invalid resource id
+  detail: Invalid post ID.
+  evidence: platform
+  remediation: The id does not exist or is not readable in the requested context.
+- code: rest_post_invalid_page_number
+  status: 400
+  title: Page out of range
+  detail: The page number requested is larger than the number of pages available.
+  evidence: platform
+  remediation: Read X-WP-TotalPages and stop paging at that value.
+- code: rest_user_cannot_view
+  status: 401
+  title: Cannot view users
+  detail: Sorry, you are not allowed to list users.
+  evidence: platform
+  remediation: The users collection is restricted on this deployment; no anonymous enumeration.
+notes:
+- The API does not emit application/problem+json, so RFC 9457 conformance is false.
+- The HTTP status is duplicated inside data.status; agents should read the status line, not the body, as authoritative.
+- 401 rather than 403 is returned for unauthenticated writes (rest_cannot_create), which is a WordPress quirk worth handling.

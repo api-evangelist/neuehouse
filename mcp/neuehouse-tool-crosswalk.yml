@@ -1,0 +1,90 @@
+generated: '2026-08-26'
+method: derived
+source: mcp/neuehouse-mcp.yml + openapi/neuehouse-content-api-openapi.yml
+summary: >-
+  Binds the candidate MCP tool surface to the REST operations that back it. NeueHouse operates no MCP
+  server and no GraphQL endpoint, so there is exactly one real surface here (REST) and the MCP column
+  is a proposal. Confidence is high throughout because each tool maps to a single operationId in a
+  contract derived from the provider's own live route index — not because a live tools/list was read.
+surfaces:
+  openapi:
+    path: openapi/neuehouse-content-api-openapi.yml
+    live_root: https://www.neuehouse.com/wp-json
+    gated: false
+    note: Read operations answer anonymously; write operations are auth-gated and closed to third parties.
+  graphql:
+    endpoint: null
+    gated: null
+    note: Probed https://www.neuehouse.com/graphql — 404. No GraphQL surface.
+  mcp:
+    url: null
+    gated: null
+    note: No MCP server exists. Tools below are candidates, not live.
+crosswalk:
+- tool: list_events
+  category: content
+  rest: [get_wp_v2_event]
+  binding: one-to-one
+  confidence: high
+- tool: get_event
+  category: content
+  rest: [get_wp_v2_event_by_id]
+  binding: one-to-one
+  confidence: high
+- tool: search_content
+  category: discovery
+  rest: [get_wp_v2_search]
+  binding: one-to-one
+  confidence: high
+- tool: list_locations
+  category: content
+  rest: [get_wp_v2_location]
+  binding: one-to-one
+  confidence: high
+- tool: get_location
+  category: content
+  rest: [get_wp_v2_location_by_id]
+  binding: one-to-one
+  confidence: high
+- tool: list_press
+  category: content
+  rest: [get_wp_v2_press]
+  binding: one-to-one
+  confidence: high
+- tool: list_pages
+  category: content
+  rest: [get_wp_v2_pages]
+  binding: one-to-one
+  confidence: high
+- tool: get_page
+  category: content
+  rest: [get_wp_v2_pages_by_id]
+  binding: one-to-one
+  confidence: high
+- tool: list_categories
+  category: taxonomy
+  rest: [get_wp_v2_categories]
+  binding: one-to-one
+  confidence: high
+- tool: get_media
+  category: assets
+  rest: [get_wp_v2_media_by_id]
+  binding: one-to-one
+  confidence: high
+mcp_only: []
+rest_only:
+- operations: 256
+  reason: >-
+    The derived contract carries 266 operations; the candidate tool set covers 10. The remainder are
+    WordPress platform and administrative routes — block types, templates, template parts, global
+    styles, font families, navigation, settings, plugins, themes, users, site health — plus every
+    write verb. They are deliberately NOT proposed as tools: they are either auth-gated, irrelevant
+    to an outside consumer, or both.
+  examples: [post_wp_v2_pages, delete_wp_v2_pages_by_id, get_wp_v2_settings, get_wp_v2_plugins, get_wp_v2_users]
+coverage:
+  rest_operations_total: 266
+  rest_operations_mapped: 10
+  mcp_tools_total: 10
+  mcp_tools_mapped: 10
+  mcp_only_count: 0
+  graphql_fields: 0

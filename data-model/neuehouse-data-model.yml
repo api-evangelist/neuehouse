@@ -1,0 +1,167 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  openapi/neuehouse-content-api-openapi.yml + live reads of
+  https://www.neuehouse.com/wp-json/wp/v2/types and /taxonomies (both HTTP 200, 2026-08-26)
+summary: >-
+  The entity graph NeueHouse actually exposes. Beyond the WordPress defaults, the deployment registers
+  four custom post types that are NeueHouse's own domain model and are readable anonymously:
+  event, location, press and neuejournal. Item counts below are the live X-WP-Total observed on
+  2026-08-26 and are evidence the surface is populated, not a projection.
+identifiers:
+  scheme: integer
+  note: >-
+    Every entity is keyed by a WordPress integer id (no prefixed string ids). Each also carries a
+    URL-safe `slug` that is unique within its type and is the stable human identifier used in links.
+entities:
+- name: event
+  rest_base: event
+  path: /wp/v2/event
+  custom: true
+  item_count: 467
+  description: >-
+    NeueHouse cultural programming — talks, screenings, dinners, performances. The largest collection
+    on the API and the one with the clearest third-party value.
+  taxonomies: [category]
+  key_fields: [id, slug, title, date, date_gmt, modified, link, status, author, featured_media, menu_order, categories, meta, acf]
+  note_fields: >-
+    Verified live on a sample record: the event type exposes no `content` or `excerpt` field — the
+    body copy is not in the REST payload. Title, dates, link, featured_media and categories are.
+- name: location
+  rest_base: location
+  path: /wp/v2/location
+  custom: true
+  item_count: 3
+  description: >-
+    NeueHouse houses. Live records are Bradbury, Hollywood (slug los-angeles) and Madison Square.
+    Note that the Los Angeles records persist in the content model although those houses did not
+    reopen under CHG ownership — the API reflects the content estate, not current operations.
+  taxonomies: [category]
+  key_fields: [id, slug, title, content, link, featured_media, acf]
+- name: press
+  rest_base: press
+  path: /wp/v2/press
+  custom: true
+  item_count: 66
+  description: NeueHouse press coverage archive.
+  taxonomies: []
+  key_fields: [id, slug, title, content, date, link, featured_media, acf]
+- name: neuejournal
+  rest_base: neuejournal
+  path: /wp/v2/neuejournal
+  custom: true
+  item_count: 0
+  description: >-
+    NeueJournal, the editorial brand. The type is registered and the route answers 200, but the
+    collection is currently empty — the archive did not survive the ownership change.
+  taxonomies: []
+- name: page
+  rest_base: pages
+  path: /wp/v2/pages
+  custom: false
+  item_count: 15
+  description: Site pages (membership, workspace, private events, policies).
+  key_fields: [id, slug, title, content, parent, menu_order, template, acf]
+- name: post
+  rest_base: posts
+  path: /wp/v2/posts
+  custom: false
+  item_count: 0
+  description: Standard WordPress blog posts. Registered but empty; NeueHouse publishes no blog.
+  taxonomies: [category, post_tag]
+- name: media
+  rest_base: media
+  path: /wp/v2/media
+  custom: false
+  item_count: 9144
+  description: >-
+    The image/asset library. By far the largest collection; every event, press and location record
+    references it through featured_media.
+  key_fields: [id, slug, source_url, media_type, mime_type, media_details, alt_text, post]
+- name: category
+  rest_base: categories
+  path: /wp/v2/categories
+  custom: false
+  item_count: 24
+  description: >-
+    Shared taxonomy. Unusually, it is registered against post, event AND location, so it is the join
+    that classifies programming and houses alike.
+  key_fields: [id, slug, name, description, parent, count]
+- name: tag
+  rest_base: tags
+  path: /wp/v2/tags
+  custom: false
+  item_count: 0
+  description: Registered but unused.
+- name: user
+  rest_base: users
+  path: /wp/v2/users
+  custom: false
+  description: Content authors. Read access is restricted on this deployment.
+relationships:
+- from: event
+  to: media
+  type: has_one
+  via: featured_media
+  note: Integer id into /wp/v2/media; resolve in one call with ?_embed.
+- from: event
+  to: category
+  type: has_many
+  via: category
+  note: The category taxonomy is registered against the event type.
+- from: event
+  to: user
+  type: belongs_to
+  via: author
+- from: location
+  to: media
+  type: has_one
+  via: featured_media
+- from: location
+  to: category
+  type: has_many
+  via: category
+- from: press
+  to: media
+  type: has_one
+  via: featured_media
+- from: page
+  to: page
+  type: belongs_to
+  via: parent
+  note: Pages are self-referentially hierarchical.
+- from: page
+  to: media
+  type: has_one
+  via: featured_media
+- from: media
+  to: page
+  type: belongs_to
+  via: post
+  note: An attachment records the content item it was uploaded to.
+- from: category
+  to: category
+  type: belongs_to
+  via: parent
+  note: Categories are hierarchical; tags are flat.
+- from: post
+  to: category
+  type: has_many
+  via: categories
+- from: post
+  to: tag
+  type: has_many
+  via: tags
+traversal:
+  hal_links: true
+  note: >-
+    Every resource carries a _links object naming its related collections, and ?_embed resolves
+    author, featured media and terms inline. An agent can walk this whole graph without knowing the
+    field names above, which is the practical strength of the surface.
+extension_fields:
+  acf: >-
+    Every custom type exposes an `acf` key (Advanced Custom Fields). Its shape is not declared in the
+    route index, and on the event record sampled on 2026-08-26 it was returned EMPTY. So the field is
+    present in the contract but carries no data an agent can rely on. Not modelled here: the schema is
+    not published and the observed value was empty. Do not assume event detail (start time, venue,
+    ticket link) is retrievable from this API — it was not present in the sampled payload.

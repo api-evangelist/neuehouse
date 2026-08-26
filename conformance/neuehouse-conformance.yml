@@ -1,0 +1,89 @@
+generated: '2026-08-26'
+method: derived
+source: >-
+  openapi/neuehouse-content-api-openapi.yml + openapi/_original/neuehouse-wp-json-index.json +
+  live probes of https://www.neuehouse.com/
+summary: >-
+  NeueHouse makes no compliance or standards claims anywhere on its public surface — there is no
+  trust page, no certifications page, and no developer documentation in which a claim could be made.
+  Every entry below is derived from what the live contract demonstrably does or does not implement.
+  Domain-standard conformance is not applicable: private members clubs / hospitality have no
+  machine-readable domain standard for this pipeline to test, and none is invented.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >-
+    NeueHouse publishes no OpenAPI. The definition in openapi/ is derived by API Evangelist from the
+    provider's own live WordPress route index; it is not a provider artifact.
+- id: rest
+  conforms: true
+  evidence: >-
+    Resource-oriented paths, correct verb semantics and HTTP status usage across 123 paths in the
+    live route index. Verified: 200 on collection reads, 404 rest_no_route, 401 rest_cannot_create.
+- id: hal
+  conforms: partial
+  evidence: >-
+    Every resource carries a _links object with rel-keyed hrefs and ?_embed resolves them inline.
+    This is HAL-shaped hypermedia but is not served as application/hal+json.
+- id: rfc5988-web-linking
+  conforms: true
+  evidence: >-
+    Verified live on GET /wp-json/wp/v2/pages?per_page=2 — response carries
+    Link: <...page=2>; rel="next".
+- id: pagination
+  conforms: true
+  evidence: >-
+    page/per_page/offset declared on collections, with X-WP-Total and X-WP-TotalPages on responses.
+    Verified: X-WP-Total 15, X-WP-TotalPages 8 on the pages collection.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors are the WordPress envelope ({code,message,data.status}) served as application/json, not
+    application/problem+json.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key or equivalent is declared on any route in the live index.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No OAuth. /.well-known/oauth-authorization-server returned 404. The only advertised mechanism is
+    WordPress Application Passwords (HTTP Basic).
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset or Deprecation headers observed on live responses; no deprecation policy published.
+- id: rfc8615-well-known
+  conforms: false
+  evidence: All eight probed /.well-known/ paths returned 404. See well-known/neuehouse-well-known.yml.
+- id: json-schema
+  conforms: partial
+  evidence: >-
+    The WordPress REST API serves a JSON Schema document per resource via OPTIONS (verified on
+    /wp/v2/pages — schema.properties returned). Schemas are machine-readable but are not published
+    as standalone artifacts.
+- id: oembed
+  conforms: true
+  evidence: >-
+    The oembed/1.0 namespace is registered and live, implementing the oEmbed 1.0 discovery/consumer
+    spec at /wp-json/oembed/1.0/embed and /proxy.
+- id: rss
+  conforms: true
+  evidence: >-
+    https://www.neuehouse.com/feed/ returns 200 with a valid RSS 2.0 document (title NeueHouse).
+domain_standard:
+  applicable: false
+  standard: null
+  evidence: >-
+    Hospitality / private members clubs have no domain contract standard of the kind this check
+    rewards (no SCIM/OData/OpenRTB/HL7/ISO-20022 analogue applies). Reward-only check — recorded as
+    not applicable rather than failed, and nothing is invented to fill it.
+certifications:
+  published: []
+  evidence: >-
+    No trust center, no SOC 2 / ISO 27001 / PCI / HIPAA claims. probe-security-programs.py returned
+    vdp=none trust=none. No Compliance pointer is emitted.
