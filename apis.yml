@@ -31,30 +31,16 @@ tags:
 - Media
 - Workspace
 apis:
-- name: NeueHouse Content API
-  description: The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/.
-    NeueHouse runs on WordPress and the WordPress REST API is exposed and answering anonymously; the route
-    index is a live machine-readable contract declaring 313 routes across 16 namespaces. The wp/v2 and
-    oembed/1.0 namespaces are the publicly readable surface and include four NeueHouse-specific types
-    — event (467 items), press (66), location (3) and neuejournal (0) — plus pages, media (9,144), categories,
-    search and oEmbed. Reads of published content require no key and no signup. Every write route requires
-    a WordPress Application Password issued only from wp-admin, so there is no third-party write access.
-    NeueHouse publishes no OpenAPI; the definition linked here was mechanically derived by API Evangelist
-    from the provider's own live route index.
+- aid: neuehouse:neuehouse-block-directory-api
+  name: NeueHouse Block Directory API
+  description: WordPress REST `block-directory` resource on www.neuehouse.com.
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
-  - Content
-  - Events
-  - REST
-  - WordPress
-  - JSON
-  - Media
+  - block-directory
   properties:
   - type: OpenAPI
-    url: openapi/neuehouse-content-api-openapi.yml
-  - type: Overlay
-    url: overlays/neuehouse-content-api-overlay.yaml
+    url: openapi/neuehouse-block-directory-api-openapi.yml
   - type: Documentation
     url: https://developer.wordpress.org/rest-api/
   - type: APIReference
@@ -73,8 +59,1176 @@ apis:
     url: conformance/neuehouse-conformance.yml
   - type: Lifecycle
     url: lifecycle/neuehouse-lifecycle.yml
-  - type: MCPServer
-    url: mcp/neuehouse-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-block-patterns-api
+  name: NeueHouse Block Patterns API
+  description: WordPress REST `block-patterns` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - block-patterns
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-block-patterns-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-block-renderer-api
+  name: NeueHouse Block Renderer API
+  description: WordPress REST `block-renderer` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - block-renderer
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-block-renderer-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-block-types-api
+  name: NeueHouse Block Types API
+  description: WordPress REST `block-types` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - block-types
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-block-types-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-blocks-api
+  name: NeueHouse Blocks API
+  description: WordPress REST `blocks` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-categories-api
+  name: NeueHouse Categories API
+  description: WordPress REST `categories` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-comments-api
+  name: NeueHouse Comments API
+  description: WordPress REST `comments` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-event-api
+  name: NeueHouse Event API
+  description: WordPress REST `event` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - event
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-event-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-font-collections-api
+  name: NeueHouse Font Collections API
+  description: WordPress REST `font-collections` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - font-collections
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-font-collections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-font-families-api
+  name: NeueHouse Font Families API
+  description: WordPress REST `font-families` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - font-families
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-font-families-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-global-styles-api
+  name: NeueHouse Global Styles API
+  description: WordPress REST `global-styles` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - global-styles
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-global-styles-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-icons-api
+  name: NeueHouse Icons API
+  description: WordPress REST `icons` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - icons
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-icons-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-location-api
+  name: NeueHouse Location API
+  description: WordPress REST `location` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - location
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-location-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-media-api
+  name: NeueHouse Media API
+  description: WordPress REST `media` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-media-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-menu-items-api
+  name: NeueHouse Menu Items API
+  description: WordPress REST `menu-items` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - menu-items
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-menu-items-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-menu-locations-api
+  name: NeueHouse Menu Locations API
+  description: WordPress REST `menu-locations` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - menu-locations
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-menu-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-menus-api
+  name: NeueHouse Menus API
+  description: WordPress REST `menus` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - menus
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-menus-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-navigation-api
+  name: NeueHouse Navigation API
+  description: WordPress REST `navigation` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - navigation
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-navigation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-neuejournal-api
+  name: NeueHouse Neuejournal API
+  description: WordPress REST `neuejournal` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - neuejournal
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-neuejournal-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-oembed-api
+  name: NeueHouse Oembed API
+  description: WordPress REST `oembed` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - oembed
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-oembed-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-pages-api
+  name: NeueHouse Pages API
+  description: WordPress REST `pages` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - pages
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-pattern-directory-api
+  name: NeueHouse Pattern Directory API
+  description: WordPress REST `pattern-directory` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - pattern-directory
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-pattern-directory-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-plugins-api
+  name: NeueHouse Plugins API
+  description: WordPress REST `plugins` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-posts-api
+  name: NeueHouse Posts API
+  description: WordPress REST `posts` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - posts
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-posts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-press-api
+  name: NeueHouse Press API
+  description: WordPress REST `press` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - press
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-press-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-search-api
+  name: NeueHouse Search API
+  description: WordPress REST `search` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-search-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-settings-api
+  name: NeueHouse Settings API
+  description: WordPress REST `settings` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-settings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-sidebars-api
+  name: NeueHouse Sidebars API
+  description: WordPress REST `sidebars` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - sidebars
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-sidebars-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-statuses-api
+  name: NeueHouse Statuses API
+  description: WordPress REST `statuses` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-tags-api
+  name: NeueHouse Tags API
+  description: WordPress REST `tags` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-taxonomies-api
+  name: NeueHouse Taxonomies API
+  description: WordPress REST `taxonomies` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-taxonomies-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-template-parts-api
+  name: NeueHouse Template Parts API
+  description: WordPress REST `template-parts` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - template-parts
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-template-parts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-templates-api
+  name: NeueHouse Templates API
+  description: WordPress REST `templates` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - templates
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-themes-api
+  name: NeueHouse Themes API
+  description: WordPress REST `themes` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - themes
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-themes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-types-api
+  name: NeueHouse Types API
+  description: WordPress REST `types` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-types-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-users-api
+  name: NeueHouse Users API
+  description: WordPress REST `users` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-widget-types-api
+  name: NeueHouse Widget Types API
+  description: WordPress REST `widget-types` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - widget-types
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-widget-types-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-widgets-api
+  name: NeueHouse Widgets API
+  description: WordPress REST `widgets` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-widgets-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-wp-api
+  name: NeueHouse Wp API
+  description: WordPress REST `wp` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - wp
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-wp-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-wp-pattern-category-api
+  name: NeueHouse Wp Pattern Category API
+  description: WordPress REST `wp_pattern_category` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - wp_pattern_category
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-wp-pattern-category-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
   - type: ToolCrosswalk
     url: mcp/neuehouse-tool-crosswalk.yml
 maintainers:
