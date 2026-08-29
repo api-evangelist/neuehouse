@@ -1,0 +1,1295 @@
+openapi: 3.2.0
+info:
+  title: NeueHouse Content API (WordPress REST) Pages API
+  version: wp/v2
+  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  contact:
+    name: NeueHouse
+    url: https://www.neuehouse.com/contact-us/
+  termsOfService: https://www.neuehouse.com/terms-conditions/
+  x-derived-from: https://www.neuehouse.com/wp-json/
+  x-derivation-method: derived
+  x-upstream-specification: https://developer.wordpress.org/rest-api/
+servers:
+- url: https://www.neuehouse.com/wp-json
+  description: NeueHouse WordPress REST API root.
+tags:
+- name: pages
+  description: WordPress REST `pages` resource on www.neuehouse.com.
+paths:
+  /wp/v2/pages:
+    get:
+      operationId: get_wp_v2_pages
+      summary: GET /wp/v2/pages
+      description: '`GET /wp/v2/pages` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published after a given ISO8601 compliant date.
+      - name: modified_after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Limit result set to posts assigned to specific authors.
+      - name: author_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Ensure result set excludes posts assigned to specific authors.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published before a given ISO8601 compliant date.
+      - name: modified_before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Limit result set to specific IDs.
+      - name: menu_order
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit result set to posts with a specific menu_order value.
+      - name: search_semantics
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - exact
+        description: How to interpret the search input.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          - menu_order
+          default: date
+        description: Sort collection by post attribute.
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Limit result set to items with particular parent IDs.
+      - name: parent_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Limit result set to all items except those of a particular parent ID.
+      - name: search_columns
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+        description: Array of column names to be searched.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to posts with one or more specific slugs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: publish
+        description: Limit result set to posts assigned one or more statuses.
+    post:
+      operationId: post_wp_v2_pages
+      summary: POST /wp/v2/pages
+      description: '`POST /wp/v2/pages` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                menu_order:
+                  type: integer
+                  description: The order of the post in relation to other posts.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+      security:
+      - applicationPassword: []
+  /wp/v2/pages/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_pages_by_id
+      summary: GET /wp/v2/pages/{id}
+      description: '`GET /wp/v2/pages/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: excerpt_length
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Override the default excerpt length.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The password for the post if it is password protected.
+    post:
+      operationId: post_wp_v2_pages_by_id
+      summary: POST /wp/v2/pages/{id}
+      description: '`POST /wp/v2/pages/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                menu_order:
+                  type: integer
+                  description: The order of the post in relation to other posts.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+      security:
+      - applicationPassword: []
+    put:
+      operationId: put_wp_v2_pages_by_id
+      summary: PUT /wp/v2/pages/{id}
+      description: '`PUT /wp/v2/pages/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                menu_order:
+                  type: integer
+                  description: The order of the post in relation to other posts.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+      security:
+      - applicationPassword: []
+    patch:
+      operationId: patch_wp_v2_pages_by_id
+      summary: PATCH /wp/v2/pages/{id}
+      description: '`PATCH /wp/v2/pages/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                menu_order:
+                  type: integer
+                  description: The order of the post in relation to other posts.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+      security:
+      - applicationPassword: []
+    delete:
+      operationId: delete_wp_v2_pages_by_id
+      summary: DELETE /wp/v2/pages/{id}
+      description: '`DELETE /wp/v2/pages/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to bypass Trash and force deletion.
+  /wp/v2/pages/{id}/autosaves:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_pages_by_id_autosaves
+      summary: GET /wp/v2/pages/{id}/autosaves
+      description: '`GET /wp/v2/pages/{id}/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The ID for the parent of the autosave.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: post_wp_v2_pages_by_id_autosaves
+      summary: POST /wp/v2/pages/{id}/autosaves
+      description: '`POST /wp/v2/pages/{id}/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent:
+                  type: integer
+                  description: The ID for the parent of the post.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                excerpt:
+                  type: object
+                  description: The excerpt for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                menu_order:
+                  type: integer
+                  description: The order of the post in relation to other posts.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+      security:
+      - applicationPassword: []
+  /wp/v2/pages/{parent}/autosaves/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `parent` as declared by the live route index.
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_pages_by_parent_autosaves_by_id
+      summary: GET /wp/v2/pages/{parent}/autosaves/{id}
+      description: '`GET /wp/v2/pages/{parent}/autosaves/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+  /wp/v2/pages/{parent}/revisions:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `parent` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_pages_by_parent_revisions
+      summary: GET /wp/v2/pages/{parent}/revisions
+      description: '`GET /wp/v2/pages/{parent}/revisions` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date
+          - id
+          - include
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        description: Sort collection by object attribute.
+  /wp/v2/pages/{parent}/revisions/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `parent` as declared by the live route index.
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_pages_by_parent_revisions_by_id
+      summary: GET /wp/v2/pages/{parent}/revisions/{id}
+      description: '`GET /wp/v2/pages/{parent}/revisions/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    delete:
+      operationId: delete_wp_v2_pages_by_parent_revisions_by_id
+      summary: DELETE /wp/v2/pages/{parent}/revisions/{id}
+      description: '`DELETE /wp/v2/pages/{parent}/revisions/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - pages
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Required to be true, as revisions do not support trashing.
+components:
+  schemas:
+    RestError:
+      type: object
+      description: The standard WordPress REST error envelope returned on every 4xx/5xx.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_no_route.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          description: Error data; carries `status` (the HTTP status) and, for validation errors, `params` and `details`.
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. The live route index advertises authentication.application-passwords with an authorization endpoint at https://www.neuehouse.com/wp-admin/authorize-application.php. Credentials are issued per WordPress user from wp-admin; there is no public self-service registration.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: Cookie authentication with an X-WP-Nonce header, used by first-party browser clients only.

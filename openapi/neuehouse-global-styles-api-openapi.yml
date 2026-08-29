@@ -1,0 +1,489 @@
+openapi: 3.2.0
+info:
+  title: NeueHouse Content API (WordPress REST) Global Styles API
+  version: wp/v2
+  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  contact:
+    name: NeueHouse
+    url: https://www.neuehouse.com/contact-us/
+  termsOfService: https://www.neuehouse.com/terms-conditions/
+  x-derived-from: https://www.neuehouse.com/wp-json/
+  x-derivation-method: derived
+  x-upstream-specification: https://developer.wordpress.org/rest-api/
+servers:
+- url: https://www.neuehouse.com/wp-json
+  description: NeueHouse WordPress REST API root.
+tags:
+- name: global-styles
+  description: WordPress REST `global-styles` resource on www.neuehouse.com.
+paths:
+  /wp/v2/global-styles/themes/{stylesheet}?):
+    parameters:
+    - name: stylesheet
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `stylesheet` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_global_styles_themes_by_stylesheet
+      summary: GET /wp/v2/global-styles/themes/{stylesheet}?)
+      description: '`GET /wp/v2/global-styles/themes/{stylesheet}?)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /wp/v2/global-styles/themes/{stylesheet}\[\]\@_\-]+)/variations:
+    parameters:
+    - name: stylesheet
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `stylesheet` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_global_styles_themes_by_stylesheet_variations
+      summary: GET /wp/v2/global-styles/themes/{stylesheet}\[\]\@_\-]+)/variations
+      description: '`GET /wp/v2/global-styles/themes/{stylesheet}\[\]\@_\-]+)/variations` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+  /wp/v2/global-styles/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_global_styles_by_id
+      summary: GET /wp/v2/global-styles/{id}
+      description: '`GET /wp/v2/global-styles/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    post:
+      operationId: post_wp_v2_global_styles_by_id
+      summary: POST /wp/v2/global-styles/{id}
+      description: '`POST /wp/v2/global-styles/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styles:
+                  type: object
+                  description: Global styles.
+                settings:
+                  type: object
+                  description: Global settings.
+                title:
+                  type: object
+                  description: Title of the global styles variation.
+      security:
+      - applicationPassword: []
+    put:
+      operationId: put_wp_v2_global_styles_by_id
+      summary: PUT /wp/v2/global-styles/{id}
+      description: '`PUT /wp/v2/global-styles/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styles:
+                  type: object
+                  description: Global styles.
+                settings:
+                  type: object
+                  description: Global settings.
+                title:
+                  type: object
+                  description: Title of the global styles variation.
+      security:
+      - applicationPassword: []
+    patch:
+      operationId: patch_wp_v2_global_styles_by_id
+      summary: PATCH /wp/v2/global-styles/{id}
+      description: '`PATCH /wp/v2/global-styles/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                styles:
+                  type: object
+                  description: Global styles.
+                settings:
+                  type: object
+                  description: Global settings.
+                title:
+                  type: object
+                  description: Title of the global styles variation.
+      security:
+      - applicationPassword: []
+  /wp/v2/global-styles/{parent}/revisions:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `parent` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_global_styles_by_parent_revisions
+      summary: GET /wp/v2/global-styles/{parent}/revisions
+      description: '`GET /wp/v2/global-styles/{parent}/revisions` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+  /wp/v2/global-styles/{parent}/revisions/{id}:
+    parameters:
+    - name: parent
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `parent` as declared by the live route index.
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Path parameter `id` as declared by the live route index.
+    get:
+      operationId: get_wp_v2_global_styles_by_parent_revisions_by_id
+      summary: GET /wp/v2/global-styles/{parent}/revisions/{id}
+      description: '`GET /wp/v2/global-styles/{parent}/revisions/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - global-styles
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+components:
+  schemas:
+    RestError:
+      type: object
+      description: The standard WordPress REST error envelope returned on every 4xx/5xx.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_no_route.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          description: Error data; carries `status` (the HTTP status) and, for validation errors, `params` and `details`.
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. The live route index advertises authentication.application-passwords with an authorization endpoint at https://www.neuehouse.com/wp-admin/authorize-application.php. Credentials are issued per WordPress user from wp-admin; there is no public self-service registration.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: Cookie authentication with an X-WP-Nonce header, used by first-party browser clients only.

@@ -1,0 +1,439 @@
+openapi: 3.2.0
+info:
+  title: NeueHouse Content API (WordPress REST) Settings API
+  version: wp/v2
+  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  contact:
+    name: NeueHouse
+    url: https://www.neuehouse.com/contact-us/
+  termsOfService: https://www.neuehouse.com/terms-conditions/
+  x-derived-from: https://www.neuehouse.com/wp-json/
+  x-derivation-method: derived
+  x-upstream-specification: https://developer.wordpress.org/rest-api/
+servers:
+- url: https://www.neuehouse.com/wp-json
+  description: NeueHouse WordPress REST API root.
+tags:
+- name: settings
+  description: WordPress REST `settings` resource on www.neuehouse.com.
+paths:
+  /wp/v2/settings:
+    get:
+      operationId: get_wp_v2_settings
+      summary: GET /wp/v2/settings
+      description: '`GET /wp/v2/settings` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - settings
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+    post:
+      operationId: post_wp_v2_settings
+      summary: POST /wp/v2/settings
+      description: '`POST /wp/v2/settings` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - settings
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wordpress_api_key:
+                  type: string
+                  description: API key for the Akismet Anti-spam connector.
+                title:
+                  type: string
+                  description: Site title.
+                description:
+                  type: string
+                  description: Site tagline.
+                url:
+                  type: string
+                  format: uri
+                  description: Site URL.
+                email:
+                  type: string
+                  format: email
+                  description: This address is used for admin purposes, like new user notification.
+                timezone:
+                  type: string
+                  description: A city in the same timezone as you.
+                date_format:
+                  type: string
+                  description: A date format for all date strings.
+                time_format:
+                  type: string
+                  description: A time format for all time strings.
+                start_of_week:
+                  type: integer
+                  description: A day number of the week that the week should start on.
+                language:
+                  type: string
+                  description: WordPress locale code.
+                use_smilies:
+                  type: boolean
+                  description: Convert emoticons like :-) and :-P to graphics on display.
+                default_category:
+                  type: integer
+                  description: Default post category.
+                default_post_format:
+                  type: string
+                  description: Default post format.
+                posts_per_page:
+                  type: integer
+                  description: Blog pages show at most.
+                show_on_front:
+                  type: string
+                  description: What to show on the front page
+                page_on_front:
+                  type: integer
+                  description: The ID of the page that should be displayed on the front page
+                page_for_posts:
+                  type: integer
+                  description: The ID of the page that should display the latest posts
+                default_ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow link notifications from other blogs (pingbacks and trackbacks) on new articles.
+                default_comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow people to submit comments on new posts.
+                site_logo:
+                  type: integer
+                  description: Site logo.
+                site_icon:
+                  type: integer
+                  description: Site icon.
+      security:
+      - applicationPassword: []
+    put:
+      operationId: put_wp_v2_settings
+      summary: PUT /wp/v2/settings
+      description: '`PUT /wp/v2/settings` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - settings
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wordpress_api_key:
+                  type: string
+                  description: API key for the Akismet Anti-spam connector.
+                title:
+                  type: string
+                  description: Site title.
+                description:
+                  type: string
+                  description: Site tagline.
+                url:
+                  type: string
+                  format: uri
+                  description: Site URL.
+                email:
+                  type: string
+                  format: email
+                  description: This address is used for admin purposes, like new user notification.
+                timezone:
+                  type: string
+                  description: A city in the same timezone as you.
+                date_format:
+                  type: string
+                  description: A date format for all date strings.
+                time_format:
+                  type: string
+                  description: A time format for all time strings.
+                start_of_week:
+                  type: integer
+                  description: A day number of the week that the week should start on.
+                language:
+                  type: string
+                  description: WordPress locale code.
+                use_smilies:
+                  type: boolean
+                  description: Convert emoticons like :-) and :-P to graphics on display.
+                default_category:
+                  type: integer
+                  description: Default post category.
+                default_post_format:
+                  type: string
+                  description: Default post format.
+                posts_per_page:
+                  type: integer
+                  description: Blog pages show at most.
+                show_on_front:
+                  type: string
+                  description: What to show on the front page
+                page_on_front:
+                  type: integer
+                  description: The ID of the page that should be displayed on the front page
+                page_for_posts:
+                  type: integer
+                  description: The ID of the page that should display the latest posts
+                default_ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow link notifications from other blogs (pingbacks and trackbacks) on new articles.
+                default_comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow people to submit comments on new posts.
+                site_logo:
+                  type: integer
+                  description: Site logo.
+                site_icon:
+                  type: integer
+                  description: Site icon.
+      security:
+      - applicationPassword: []
+    patch:
+      operationId: patch_wp_v2_settings
+      summary: PATCH /wp/v2/settings
+      description: '`PATCH /wp/v2/settings` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
+      tags:
+      - settings
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request — WordPress returns a `rest_invalid_param` error object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '401':
+          description: Authentication required — WordPress returns `rest_not_logged_in` / `rest_cannot_*`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '403':
+          description: Forbidden — the authenticated user lacks the capability (`rest_forbidden`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+        '404':
+          description: Not found — `rest_no_route` or `rest_post_invalid_id`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestError'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wordpress_api_key:
+                  type: string
+                  description: API key for the Akismet Anti-spam connector.
+                title:
+                  type: string
+                  description: Site title.
+                description:
+                  type: string
+                  description: Site tagline.
+                url:
+                  type: string
+                  format: uri
+                  description: Site URL.
+                email:
+                  type: string
+                  format: email
+                  description: This address is used for admin purposes, like new user notification.
+                timezone:
+                  type: string
+                  description: A city in the same timezone as you.
+                date_format:
+                  type: string
+                  description: A date format for all date strings.
+                time_format:
+                  type: string
+                  description: A time format for all time strings.
+                start_of_week:
+                  type: integer
+                  description: A day number of the week that the week should start on.
+                language:
+                  type: string
+                  description: WordPress locale code.
+                use_smilies:
+                  type: boolean
+                  description: Convert emoticons like :-) and :-P to graphics on display.
+                default_category:
+                  type: integer
+                  description: Default post category.
+                default_post_format:
+                  type: string
+                  description: Default post format.
+                posts_per_page:
+                  type: integer
+                  description: Blog pages show at most.
+                show_on_front:
+                  type: string
+                  description: What to show on the front page
+                page_on_front:
+                  type: integer
+                  description: The ID of the page that should be displayed on the front page
+                page_for_posts:
+                  type: integer
+                  description: The ID of the page that should display the latest posts
+                default_ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow link notifications from other blogs (pingbacks and trackbacks) on new articles.
+                default_comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Allow people to submit comments on new posts.
+                site_logo:
+                  type: integer
+                  description: Site logo.
+                site_icon:
+                  type: integer
+                  description: Site icon.
+      security:
+      - applicationPassword: []
+components:
+  schemas:
+    RestError:
+      type: object
+      description: The standard WordPress REST error envelope returned on every 4xx/5xx.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_no_route.
+        message:
+          type: string
+          description: Human-readable message.
+        data:
+          type: object
+          description: Error data; carries `status` (the HTTP status) and, for validation errors, `params` and `details`.
+          properties:
+            status:
+              type: integer
+      required:
+      - code
+      - message
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. The live route index advertises authentication.application-passwords with an authorization endpoint at https://www.neuehouse.com/wp-admin/authorize-application.php. Credentials are issued per WordPress user from wp-admin; there is no public self-service registration.
+    cookieNonce:
+      type: apiKey
+      in: header
+      name: X-WP-Nonce
+      description: Cookie authentication with an X-WP-Nonce header, used by first-party browser clients only.

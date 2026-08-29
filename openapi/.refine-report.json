@@ -1,0 +1,58 @@
+{
+  "provider": "neuehouse",
+  "sources": [
+    "neuehouse-content-api-openapi.yml"
+  ],
+  "outputs": [
+    "neuehouse-block-directory-api-openapi.yml",
+    "neuehouse-block-patterns-api-openapi.yml",
+    "neuehouse-block-renderer-api-openapi.yml",
+    "neuehouse-block-types-api-openapi.yml",
+    "neuehouse-blocks-api-openapi.yml",
+    "neuehouse-categories-api-openapi.yml",
+    "neuehouse-comments-api-openapi.yml",
+    "neuehouse-event-api-openapi.yml",
+    "neuehouse-font-collections-api-openapi.yml",
+    "neuehouse-font-families-api-openapi.yml",
+    "neuehouse-global-styles-api-openapi.yml",
+    "neuehouse-icons-api-openapi.yml",
+    "neuehouse-location-api-openapi.yml",
+    "neuehouse-media-api-openapi.yml",
+    "neuehouse-menu-items-api-openapi.yml",
+    "neuehouse-menu-locations-api-openapi.yml",
+    "neuehouse-menus-api-openapi.yml",
+    "neuehouse-navigation-api-openapi.yml",
+    "neuehouse-neuejournal-api-openapi.yml",
+    "neuehouse-oembed-api-openapi.yml",
+    "neuehouse-pages-api-openapi.yml",
+    "neuehouse-pattern-directory-api-openapi.yml",
+    "neuehouse-plugins-api-openapi.yml",
+    "neuehouse-posts-api-openapi.yml",
+    "neuehouse-press-api-openapi.yml",
+    "neuehouse-search-api-openapi.yml",
+    "neuehouse-settings-api-openapi.yml",
+    "neuehouse-sidebars-api-openapi.yml",
+    "neuehouse-statuses-api-openapi.yml",
+    "neuehouse-tags-api-openapi.yml",
+    "neuehouse-taxonomies-api-openapi.yml",
+    "neuehouse-template-parts-api-openapi.yml",
+    "neuehouse-templates-api-openapi.yml",
+    "neuehouse-themes-api-openapi.yml",
+    "neuehouse-types-api-openapi.yml",
+    "neuehouse-users-api-openapi.yml",
+    "neuehouse-widget-types-api-openapi.yml",
+    "neuehouse-widgets-api-openapi.yml",
+    "neuehouse-wp-api-openapi.yml",
+    "neuehouse-wp-pattern-category-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/neuehouse-content-api-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "neuehouse-content-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+40 apis, 40 total)"
+  ],
+  "skipped": []
+}
