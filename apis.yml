@@ -34,6 +34,16 @@ created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Hospitality
+- Co-Working
+- Event
+- Content
+- WordPress
+- Membership
+- Real-Estate
+- Media
+- Workspace
+tags_raw:
+- Hospitality
 - Coworking
 - Events
 - Content
@@ -169,6 +179,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Blocks
+  tags_raw:
   - blocks
   properties:
   - type: OpenAPI
@@ -199,6 +211,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -229,6 +243,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -259,6 +275,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Event
+  tags_raw:
   - event
   properties:
   - type: OpenAPI
@@ -379,6 +397,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Icons
+  tags_raw:
   - icons
   properties:
   - type: OpenAPI
@@ -409,6 +429,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Location
+  tags_raw:
   - location
   properties:
   - type: OpenAPI
@@ -439,6 +461,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
@@ -469,6 +493,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Menu Items
+  tags_raw:
   - menu-items
   properties:
   - type: OpenAPI
@@ -529,6 +555,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Menus
+  tags_raw:
   - menus
   properties:
   - type: OpenAPI
@@ -559,6 +587,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Navigation
+  tags_raw:
   - navigation
   properties:
   - type: OpenAPI
@@ -619,6 +649,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - oEmbed
+  tags_raw:
   - oembed
   properties:
   - type: OpenAPI
@@ -649,6 +681,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Pages
+  tags_raw:
   - pages
   properties:
   - type: OpenAPI
@@ -709,6 +743,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Plugins
+  tags_raw:
   - plugins
   properties:
   - type: OpenAPI
@@ -739,6 +775,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Posts
+  tags_raw:
   - posts
   properties:
   - type: OpenAPI
@@ -769,6 +807,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Press
+  tags_raw:
   - press
   properties:
   - type: OpenAPI
@@ -799,6 +839,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -829,6 +871,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -889,6 +933,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Status
+  tags_raw:
   - statuses
   properties:
   - type: OpenAPI
@@ -919,6 +965,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -1009,6 +1057,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Templates
+  tags_raw:
   - templates
   properties:
   - type: OpenAPI
@@ -1039,6 +1089,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Themes
+  tags_raw:
   - themes
   properties:
   - type: OpenAPI
@@ -1069,6 +1121,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI
@@ -1099,6 +1153,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -1159,6 +1215,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - Widgets
+  tags_raw:
   - widgets
   properties:
   - type: OpenAPI
@@ -1218,7 +1276,8 @@ apis:
   description: WordPress REST `wp_pattern_category` resource on www.neuehouse.com.
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - wp_pattern_category
   properties:
   - type: OpenAPI
