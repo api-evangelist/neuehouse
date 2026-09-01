@@ -493,7 +493,7 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
-  - Menu Items
+  - menu-items
   tags_raw:
   - menu-items
   properties:
