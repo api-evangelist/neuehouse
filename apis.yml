@@ -657,38 +657,6 @@ apis:
     url: lifecycle/neuehouse-lifecycle.yml
   - type: ToolCrosswalk
     url: mcp/neuehouse-tool-crosswalk.yml
-- aid: neuehouse:neuehouse-oembed-api
-  name: NeueHouse Oembed API
-  description: WordPress REST `oembed` resource on www.neuehouse.com.
-  humanURL: https://www.neuehouse.com/
-  baseURL: https://www.neuehouse.com/wp-json
-  tags:
-  - oEmbed
-  tags_raw:
-  - oembed
-  properties:
-  - type: OpenAPI
-    url: openapi/neuehouse-oembed-api-openapi.yml
-  - type: Documentation
-    url: https://developer.wordpress.org/rest-api/
-  - type: APIReference
-    url: https://www.neuehouse.com/wp-json/
-  - type: Authentication
-    url: authentication/neuehouse-authentication.yml
-  - type: ErrorCatalog
-    url: errors/neuehouse-problem-types.yml
-  - type: Conventions
-    url: conventions/neuehouse-conventions.yml
-  - type: DataModel
-    url: data-model/neuehouse-data-model.yml
-  - type: RateLimits
-    url: rate-limits/neuehouse-rate-limits.yml
-  - type: Conformance
-    url: conformance/neuehouse-conformance.yml
-  - type: Lifecycle
-    url: lifecycle/neuehouse-lifecycle.yml
-  - type: ToolCrosswalk
-    url: mcp/neuehouse-tool-crosswalk.yml
 - aid: neuehouse:neuehouse-pages-api
   name: NeueHouse Pages API
   description: WordPress REST `pages` resource on www.neuehouse.com.
@@ -1296,6 +1264,36 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/neuehouse-wp-pattern-category-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://www.neuehouse.com/wp-json/
+  - type: Authentication
+    url: authentication/neuehouse-authentication.yml
+  - type: ErrorCatalog
+    url: errors/neuehouse-problem-types.yml
+  - type: Conventions
+    url: conventions/neuehouse-conventions.yml
+  - type: DataModel
+    url: data-model/neuehouse-data-model.yml
+  - type: RateLimits
+    url: rate-limits/neuehouse-rate-limits.yml
+  - type: Conformance
+    url: conformance/neuehouse-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/neuehouse-lifecycle.yml
+  - type: ToolCrosswalk
+    url: mcp/neuehouse-tool-crosswalk.yml
+- aid: neuehouse:neuehouse-o-embed-api
+  name: NeueHouse o Embed API
+  description: WordPress REST `oembed` resource on www.neuehouse.com.
+  humanURL: https://www.neuehouse.com/
+  baseURL: https://www.neuehouse.com/wp-json
+  tags:
+  - o Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/neuehouse-o-embed-api-openapi.yml
   - type: Documentation
     url: https://developer.wordpress.org/rest-api/
   - type: APIReference
