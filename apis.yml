@@ -1290,6 +1290,8 @@ apis:
   humanURL: https://www.neuehouse.com/
   baseURL: https://www.neuehouse.com/wp-json
   tags:
+  - oEmbed
+  tags_raw:
   - o Embed
   properties:
   - type: OpenAPI
