@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: NeueHouse Content API (WordPress REST) Menu Items API
   version: wp/v2
-  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  description: The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/.
   contact:
     name: NeueHouse
     url: https://www.neuehouse.com/contact-us/
@@ -14,7 +14,7 @@ servers:
 - url: https://www.neuehouse.com/wp-json
   description: NeueHouse WordPress REST API root.
 tags:
-- name: menu-items
+- name: Menu Items
   description: WordPress REST `menu-items` resource on www.neuehouse.com.
 paths:
   /wp/v2/menu-items:
@@ -23,7 +23,7 @@ paths:
       summary: GET /wp/v2/menu-items
       description: '`GET /wp/v2/menu-items` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -234,7 +234,7 @@ paths:
       summary: POST /wp/v2/menu-items
       description: '`POST /wp/v2/menu-items` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -358,7 +358,7 @@ paths:
       summary: GET /wp/v2/menu-items/{id}
       description: '`GET /wp/v2/menu-items/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -407,7 +407,7 @@ paths:
       summary: POST /wp/v2/menu-items/{id}
       description: '`POST /wp/v2/menu-items/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -518,7 +518,7 @@ paths:
       summary: PUT /wp/v2/menu-items/{id}
       description: '`PUT /wp/v2/menu-items/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -629,7 +629,7 @@ paths:
       summary: PATCH /wp/v2/menu-items/{id}
       description: '`PATCH /wp/v2/menu-items/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -740,7 +740,7 @@ paths:
       summary: DELETE /wp/v2/menu-items/{id}
       description: '`DELETE /wp/v2/menu-items/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -793,7 +793,7 @@ paths:
       summary: GET /wp/v2/menu-items/{id}/autosaves
       description: '`GET /wp/v2/menu-items/{id}/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -848,7 +848,7 @@ paths:
       summary: POST /wp/v2/menu-items/{id}/autosaves
       description: '`POST /wp/v2/menu-items/{id}/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.
@@ -973,7 +973,7 @@ paths:
       summary: GET /wp/v2/menu-items/{parent}/autosaves/{id}
       description: '`GET /wp/v2/menu-items/{parent}/autosaves/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: Successful response.

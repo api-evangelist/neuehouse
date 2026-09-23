@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: NeueHouse Content API (WordPress REST) Templates API
   version: wp/v2
-  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  description: The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/.
   contact:
     name: NeueHouse
     url: https://www.neuehouse.com/contact-us/
@@ -14,7 +14,7 @@ servers:
 - url: https://www.neuehouse.com/wp-json
   description: NeueHouse WordPress REST API root.
 tags:
-- name: templates
+- name: Templates
   description: WordPress REST `templates` resource on www.neuehouse.com.
 paths:
   /wp/v2/templates:
@@ -23,7 +23,7 @@ paths:
       summary: GET /wp/v2/templates
       description: '`GET /wp/v2/templates` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -90,7 +90,7 @@ paths:
       summary: POST /wp/v2/templates
       description: '`POST /wp/v2/templates` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -174,7 +174,7 @@ paths:
       summary: GET /wp/v2/templates/lookup
       description: '`GET /wp/v2/templates/lookup` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -238,7 +238,7 @@ paths:
       summary: GET /wp/v2/templates/{id}?)[\/\w%-]+)
       description: '`GET /wp/v2/templates/{id}?)[\/\w%-]+)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -287,7 +287,7 @@ paths:
       summary: POST /wp/v2/templates/{id}?)[\/\w%-]+)
       description: '`POST /wp/v2/templates/{id}?)[\/\w%-]+)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -364,7 +364,7 @@ paths:
       summary: PUT /wp/v2/templates/{id}?)[\/\w%-]+)
       description: '`PUT /wp/v2/templates/{id}?)[\/\w%-]+)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -441,7 +441,7 @@ paths:
       summary: PATCH /wp/v2/templates/{id}?)[\/\w%-]+)
       description: '`PATCH /wp/v2/templates/{id}?)[\/\w%-]+)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -518,7 +518,7 @@ paths:
       summary: DELETE /wp/v2/templates/{id}?)[\/\w%-]+)
       description: '`DELETE /wp/v2/templates/{id}?)[\/\w%-]+)` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -571,7 +571,7 @@ paths:
       summary: GET /wp/v2/templates/{id}?)[\/\w%-]+)/autosaves
       description: '`GET /wp/v2/templates/{id}?)[\/\w%-]+)/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -620,7 +620,7 @@ paths:
       summary: POST /wp/v2/templates/{id}?)[\/\w%-]+)/autosaves
       description: '`POST /wp/v2/templates/{id}?)[\/\w%-]+)/autosaves` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -711,7 +711,7 @@ paths:
       summary: GET /wp/v2/templates/{parent}?)[\/\w%-]+)/autosaves/{id}
       description: '`GET /wp/v2/templates/{parent}?)[\/\w%-]+)/autosaves/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -768,7 +768,7 @@ paths:
       summary: GET /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions
       description: '`GET /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -899,7 +899,7 @@ paths:
       summary: GET /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions/{id}
       description: '`GET /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.
@@ -948,7 +948,7 @@ paths:
       summary: DELETE /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions/{id}
       description: '`DELETE /wp/v2/templates/{parent}?)[\/\w%-]+)/revisions/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: Successful response.

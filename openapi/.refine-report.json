@@ -1,7 +1,7 @@
 {
   "provider": "neuehouse",
   "sources": [
-    "neuehouse-content-api-openapi.yml"
+    "_ae-authored/neuehouse-content-api-openapi.yml"
   ],
   "outputs": [
     "neuehouse-block-directory-api-openapi.yml",
@@ -46,13 +46,56 @@
     "neuehouse-wp-pattern-category-api-openapi.yml"
   ],
   "archived": [
-    "archived openapi/neuehouse-content-api-openapi.yml"
+    "deleted 1 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "neuehouse-content-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: written (+40 apis, 40 total)"
+    "superseded outputs removed: neuehouse-o-embed-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 40 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "neuehouse-block-directory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-block-patterns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-block-renderer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-block-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-event-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-font-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-font-families-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-global-styles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-icons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-location-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-menu-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-menu-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-menus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-navigation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-neuejournal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-o-embed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-pattern-directory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-press-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-sidebars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-statuses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-taxonomies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-template-parts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-themes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-widget-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-widgets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-wp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "neuehouse-wp-pattern-category-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: NeueHouse Content API (WordPress REST) Users API
   version: wp/v2
-  description: 'The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/. NeueHouse runs its site on WordPress, and the WordPress REST API is exposed and answering anonymously: the route index at /wp-json/ is a live, machine-readable contract declaring 313 routes across 16 namespaces, of which the wp/v2 and oembed/1.0 namespaces below are the publicly readable content surface (pages, media, taxonomies, block types, search, oEmbed). Read operations on published content are anonymous; every write operation requires an authenticated WordPress user, so the write half of this contract is documented but not open. This document was mechanically derived from the provider''s own live route index — argument names, types, enums, defaults and required flags are copied from it verbatim. NeueHouse does not publish an OpenAPI definition itself.'
+  description: The public content API NeueHouse serves from its own host at https://www.neuehouse.com/wp-json/.
   contact:
     name: NeueHouse
     url: https://www.neuehouse.com/contact-us/
@@ -14,7 +14,7 @@ servers:
 - url: https://www.neuehouse.com/wp-json
   description: NeueHouse WordPress REST API root.
 tags:
-- name: users
+- name: Users
   description: WordPress REST `users` resource on www.neuehouse.com.
 paths:
   /wp/v2/users:
@@ -23,7 +23,7 @@ paths:
       summary: GET /wp/v2/users
       description: '`GET /wp/v2/users` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -189,7 +189,7 @@ paths:
       summary: POST /wp/v2/users
       description: '`POST /wp/v2/users` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -286,7 +286,7 @@ paths:
       summary: GET /wp/v2/users/me
       description: '`GET /wp/v2/users/me` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -335,7 +335,7 @@ paths:
       summary: POST /wp/v2/users/me
       description: '`POST /wp/v2/users/me` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -427,7 +427,7 @@ paths:
       summary: PUT /wp/v2/users/me
       description: '`PUT /wp/v2/users/me` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -519,7 +519,7 @@ paths:
       summary: PATCH /wp/v2/users/me
       description: '`PATCH /wp/v2/users/me` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -611,7 +611,7 @@ paths:
       summary: DELETE /wp/v2/users/me
       description: '`DELETE /wp/v2/users/me` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -670,7 +670,7 @@ paths:
       summary: GET /wp/v2/users/{id}
       description: '`GET /wp/v2/users/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -719,7 +719,7 @@ paths:
       summary: POST /wp/v2/users/{id}
       description: '`POST /wp/v2/users/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -811,7 +811,7 @@ paths:
       summary: PUT /wp/v2/users/{id}
       description: '`PUT /wp/v2/users/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -903,7 +903,7 @@ paths:
       summary: PATCH /wp/v2/users/{id}
       description: '`PATCH /wp/v2/users/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -995,7 +995,7 @@ paths:
       summary: DELETE /wp/v2/users/{id}
       description: '`DELETE /wp/v2/users/{id}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1054,7 +1054,7 @@ paths:
       summary: GET /wp/v2/users/{user_id})/application-passwords
       description: '`GET /wp/v2/users/{user_id})/application-passwords` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1103,7 +1103,7 @@ paths:
       summary: POST /wp/v2/users/{user_id})/application-passwords
       description: '`POST /wp/v2/users/{user_id})/application-passwords` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1157,7 +1157,7 @@ paths:
       summary: DELETE /wp/v2/users/{user_id})/application-passwords
       description: '`DELETE /wp/v2/users/{user_id})/application-passwords` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1202,7 +1202,7 @@ paths:
       summary: GET /wp/v2/users/{user_id})/application-passwords/introspect
       description: '`GET /wp/v2/users/{user_id})/application-passwords/introspect` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1265,7 +1265,7 @@ paths:
       summary: GET /wp/v2/users/{user_id})/application-passwords/{uuid}
       description: '`GET /wp/v2/users/{user_id})/application-passwords/{uuid}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1314,7 +1314,7 @@ paths:
       summary: POST /wp/v2/users/{user_id})/application-passwords/{uuid}
       description: '`POST /wp/v2/users/{user_id})/application-passwords/{uuid}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1366,7 +1366,7 @@ paths:
       summary: PUT /wp/v2/users/{user_id})/application-passwords/{uuid}
       description: '`PUT /wp/v2/users/{user_id})/application-passwords/{uuid}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1418,7 +1418,7 @@ paths:
       summary: PATCH /wp/v2/users/{user_id})/application-passwords/{uuid}
       description: '`PATCH /wp/v2/users/{user_id})/application-passwords/{uuid}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
@@ -1470,7 +1470,7 @@ paths:
       summary: DELETE /wp/v2/users/{user_id})/application-passwords/{uuid}
       description: '`DELETE /wp/v2/users/{user_id})/application-passwords/{uuid}` as declared by the NeueHouse WordPress REST route index at https://www.neuehouse.com/wp-json/. Argument names, defaults, enums and required flags below are copied verbatim from that index.'
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: Successful response.
